@@ -169,7 +169,7 @@ Or maybe you want to create a new Order
         )
     ));
 
-#### TODO: Implement PUT and DELETE functionality
+#### TODO: Implement DELETE functionality
 
 ## Contributing
 

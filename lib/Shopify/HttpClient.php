@@ -7,6 +7,7 @@ interface HttpClient
 
     const POST = 'post';
     const GET = 'get';
+    const PUT = 'put';
 
     /**
      * set the Shopify permanent access token

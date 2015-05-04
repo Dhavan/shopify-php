@@ -98,6 +98,12 @@ class Client
         return $this->makeApiRequest($resource, $data, HttpClient::POST);
     }
 
+
+    public function put($resource, array $data = array())
+    {
+        return $this->makeApiRequest($resource, $data, HttpClient::PUT);
+    }
+
     /**
      * generate the signature as required by shopify
      * @param array $params
@@ -234,18 +240,20 @@ class Client
                 $data = json_encode($params);
                 $response = $this->getHttpClient()->post($uri, $data);
                 break;
-            case 'PUT':
+            case HttpClient::PUT:
+                $data = $params;
+                $response = $this->getHttpClient()->put($uri, $data);
+                break;
             case 'DELETE':
             default:
                 throw new \RuntimeException(
-                    'Currently only "GET" and "POST" are supported. "PUT" and '
-                    . '"DELETE" functionality is currently under development'
+                    'Currently only "GET", "POST", "PUT" are supported. "DELETE" functionality is currently under development'
                 );
         }
 
         $response = json_decode($response);
 
-        if (isset($response->errors)) {
+        if(isset($response->errors)){
             throw new \RuntimeException($response->errors);
         }
 
