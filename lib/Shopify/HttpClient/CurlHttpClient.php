@@ -107,7 +107,9 @@ class CurlHttpClient extends HttpClientAdapter
         $ch = $this->initCurlHandler($uri);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_VERBOSE, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 1);
 
         if (!is_null($params) && !is_array($params)) {
             $this->headers[] = 'Content-Type: application/json';
@@ -132,7 +134,7 @@ class CurlHttpClient extends HttpClientAdapter
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $uri);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'offshoot/shopify-php client');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'charmquark/shopify-php client');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $this->verifyHost);
 
