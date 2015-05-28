@@ -1,11 +1,8 @@
 # shopify-php
 
-[![Latest Stable Version](https://poser.pugx.org/offshoot/shopify-php/v/stable.png)](https://packagist.org/packages/offshoot/shopify-php) [![Total Downloads](https://poser.pugx.org/offshoot/shopify-php/downloads.png)](https://packagist.org/packages/offshoot/shopify-php) [![Latest Unstable Version](https://poser.pugx.org/offshoot/shopify-php/v/unstable.png)](https://packagist.org/packages/offshoot/shopify-php) [![License](https://poser.pugx.org/offshoot/shopify-php/license.png)](https://packagist.org/packages/offshoot/shopify-php)
-
 A simple [Shopify API](http://api.shopify.com/) client in PHP.
 
 The canoncial repository for this stream of development is
-[https://github.com/TeamOffshoot/shopify-php](https://github.com/TeamOffshoot/shopify-php)
 
 This API Client is still in a pre-1.0 state, so you can expect:
 * some bugs (feel free to submit a pull request with bug fixes and test coverage)
@@ -169,7 +166,7 @@ Or maybe you want to create a new Order
         )
     ));
 
-#### TODO: Implement DELETE functionality
+#### TODO: Write tests for PUT and DELETE methods
 
 ## Contributing
 
@@ -179,7 +176,7 @@ more about Pull Requests
 [here](https://help.github.com/articles/creating-a-pull-request)
 
 In order to run the test suite, ensure that the development dependencies have
-been installed via composer. Then from your command line, simple run:
+been installed via composer. Then from your command line, run:
 
     vendor/bin/phpunit --bootstrap tests/bootstrap.php tests/
 
