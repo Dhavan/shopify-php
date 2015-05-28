@@ -99,9 +99,27 @@ class Client
     }
 
 
+    /**
+     * make a PUT request to the Shopify API
+     * @param string $resource
+     * @param array $data
+     * @return \stdClass
+     */
     public function put($resource, array $data = array())
     {
         return $this->makeApiRequest($resource, $data, HttpClient::PUT);
+    }
+
+
+    /**
+     * make a DELETE request to the Shopify API
+     * @param string $resource
+     * @param array $data
+     * @return \stdClass
+     */
+    public function delete($resource, array $data = array())
+    {
+        return $this->makeApiRequest($resource, $data, HttpClient::DELETE);
     }
 
     /**
@@ -244,10 +262,13 @@ class Client
                 $data = $params;
                 $response = $this->getHttpClient()->put($uri, $data);
                 break;
-            case 'DELETE':
+            case HttpClient::DELETE:
+                $data = $params;
+                $response = $this->getHttpClient()->delete($uri, $data);
+                break;
             default:
                 throw new \RuntimeException(
-                    'Currently only "GET", "POST", "PUT" are supported. "DELETE" functionality is currently under development'
+                    'Oops! Something went wrong! Did you type the method name correctly?'
                 );
         }
 

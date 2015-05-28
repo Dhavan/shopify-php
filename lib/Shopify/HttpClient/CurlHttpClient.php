@@ -122,6 +122,27 @@ class CurlHttpClient extends HttpClientAdapter
         return $this->makeRequest($ch);
     }
 
+
+    public function delete($uri, $params = null)
+    {
+        $ch = $this->initCurlHandler($uri);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_VERBOSE, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 1);
+
+        if (!is_null($params) && !is_array($params)) {
+            $this->headers[] = 'Content-Type: application/json';
+        }
+
+        if (!is_null($params)) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+        }
+
+        return $this->makeRequest($ch);
+    }
+
     /**
      * initialize the cURL handler
      * @param string $uri
